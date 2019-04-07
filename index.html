@@ -1,0 +1,140 @@
+<html>
+<head>
+       <title>source code: Program to check number upper lower others.asm</title>
+       <meta name="description" content="source code">
+       <style>
+           a:link {text-decoration: none}
+           a:visited {text-decoration: none}
+           a:hover {text-decoration: none; color:#ff0000}
+           #myName{color: green; font-weight: bold;}
+       </style>
+</head>
+<body leftmargin=110  rightmargin=110 topmargin=20 bgcolor=#FFFFFF text=#000000 link=blue vlink=blue alink=blue>
+ 
+ 
+<!-- * -->
+<h1><font color=#FFFFFF> ;</font> <font face="Terminal"> A Program to check if a input character is number or uppercase or lowercase or others.asm </font></h1>
+ 
+
+<pre><font face="Terminal">
+TITLE: A Program to check if a input character is number, uppercase, lowercase <font color=#0000FF>or</font> others 
+ 
+.MODEL SMALL 
+.STACK 100H 
+      
+.DATA 
+<font color=#C80000>ch</font> <font color=#000064>DB</font> ? 
+ 
+UPPER  <font color=#000064>DB</font> 10, 13,<font color=#800080>"Uppercase"</font>, <font color=#800080>"$"</font> 
+LOWER  <font color=#000064>DB</font> 10, 13,<font color=#800080>"Lowercase"</font>,  <font color=#800080>"$"</font> 
+NUMBER <font color=#000064>DB</font> 10, 13,<font color=#800080>"Number"</font>,  <font color=#800080>"$"</font> 
+OTHER  <font color=#000064>DB</font> 10, 13,<font color=#800080>"Others $"</font> 
+ 
+   
+.CODE 
+ 
+ MAIN <font color=#0000FF>PROC</font> 
+     
+    <font color=#0000FF>MOV</font> <font color=#C80000>AX</font>, @DATA 
+    <font color=#0000FF>MOV</font> <font color=#800000>DS</font>, <font color=#C80000>AX</font> 
+     
+     
+    <font color=#0000FF>MOV</font> <font color=#C80000>AH</font>,1 
+    <font color=#0000FF>INT</font> 21H 
+     
+    <font color=#0000FF>MOV</font> <font color=#C80000>BL</font>, <font color=#C80000>AL</font>    
+    <font color=#0000FF>MOV</font> <font color=#C80000>CH</font>, <font color=#C80000>BL</font> 
+    <font color=#0000FF>MOV</font> <font color=#C80000>BL</font>, <font color=#C80000>CH</font>  
+     
+     
+    <font color=#0000FF>CMP</font> <font color=#C80000>BL</font>, <font color=#800080>"A"</font> 
+    <font color=#0000FF>JGE</font> CHECK2 
+     
+    <font color=#0000FF>CMP</font> <font color=#C80000>BL</font>, <font color=#800080>"a"</font> 
+    <font color=#0000FF>JGE</font> CHECK3 
+     
+    <font color=#0000FF>CMP</font> <font color=#C80000>BL</font>, <font color=#800080>"0"</font> 
+    <font color=#0000FF>JGE</font> CHECK4 
+     
+    
+    <font color=#0000FF>JMP</font> OTHERD 
+     
+     
+    CHECK2: 
+        <font color=#0000FF>CMP</font> <font color=#C80000>BL</font>, <font color=#800080>"Z"</font> 
+        <font color=#0000FF>JLE</font> UPPERD 
+ 
+     
+    CHECK3: 
+        <font color=#0000FF>CMP</font> <font color=#C80000>BL</font>, <font color=#800080>"z"</font> 
+        <font color=#0000FF>JLE</font> LOWERD 
+     
+    CHECK4: 
+        <font color=#0000FF>CMP</font> <font color=#C80000>BL</font>, <font color=#800080>"9"</font> 
+        <font color=#0000FF>JLE</font> NUMBERD 
+        <font color=#0000FF>JMP</font> OTHERD 
+ 
+ 
+    UPPERD: 
+        <font color=#0000FF>MOV</font> <font color=#C80000>AH</font>,9 
+        <font color=#0000FF>LEA</font> <font color=#C80000>DX</font>, UPPER 
+        <font color=#0000FF>INT</font> 21H 
+         
+        <font color=#0000FF>JMP</font> EXIT 
+         
+         
+    LOWERD: 
+        <font color=#0000FF>MOV</font> <font color=#C80000>AH</font>,9 
+        <font color=#0000FF>LEA</font> <font color=#C80000>DX</font>, LOWER 
+        <font color=#0000FF>INT</font> 21H 
+         
+        <font color=#0000FF>JMP</font> EXIT 
+         
+         
+    NUMBERD: 
+        <font color=#0000FF>MOV</font> <font color=#C80000>AH</font>,9 
+        <font color=#0000FF>LEA</font> <font color=#C80000>DX</font>, NUMBER 
+        <font color=#0000FF>INT</font> 21H 
+         
+        <font color=#0000FF>JMP</font> EXIT 
+     
+         
+    OTHERD: 
+        <font color=#0000FF>MOV</font> <font color=#C80000>AH</font>,9 
+        <font color=#0000FF>LEA</font> <font color=#C80000>DX</font>, OTHER 
+        <font color=#0000FF>INT</font> 21H 
+  
+     
+    EXIT:  
+        <font color=#0000FF>MOV</font> <font color=#C80000>AH</font>, 4CH 
+        <font color=#0000FF>INT</font> 21H 
+   
+     
+ MAIN ENDP 
+     
+    <font color=#000064>END</font> MAIN 
+</font></pre>
+ 
+<!-- *** -->
+
+<hr>
+<h3>Screenshots of the Program</h3>
+
+<img src="Character Checker-01.jpg" alt="A Screenshot of the program"/>
+<br>
+<img src="Character Checker-02.jpg" alt="Another Screenshot of the program"/>
+<br>
+<img src="Character Checker-03.jpg" alt="Another Screenshot of the program"/>
+<br>
+<img src="Character Checker-04.jpg" alt="Another Screenshot of the program"/><br><br><br>
+
+<hr>
+
+
+<footer>
+    <p> Copyright &copy; <a href="https://www.sbook99.com/p/shuvongkor-barman.html"> <span id="myName">Shuvongkor Barman</span></a> 2019 </p>
+</footer>
+ 
+ 
+</body>
+</html>
